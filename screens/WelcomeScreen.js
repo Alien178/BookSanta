@@ -59,6 +59,7 @@ export default class WelcomeScreen extends React.Component {
             address: this.state.address,
             contact: this.state.contact,
             emailID: this.state.emailID,
+            isBookRequestActive: false,
           });
           return Alert.alert("User Sign Up Successful!!", "", [
             {
