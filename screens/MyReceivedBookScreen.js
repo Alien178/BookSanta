@@ -23,12 +23,13 @@ export default class MyReceivedBookScreen extends React.Component {
     super();
     this.state = {
       receivedBooksList: [],
+      userID: firebase.auth().currentUser.email
     };
     this.requestRef = null;
   }
 
   getReceivedBooksList = () => {
-    this.requestRef = db.collection("receivedBooks").onSnapshot((Snapshot) => {
+    this.requestRef = db.collection("receivedBooks").where("emailID", "==", this.state.userID).onSnapshot((Snapshot) => {
       var receivedBooksList = Snapshot.docs.map((document) => document.data());
       this.setState({
         receivedBooksList: receivedBooksList,
